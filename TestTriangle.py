@@ -21,17 +21,23 @@ class TestTriangles(unittest.TestCase):
     def testRightTriangleA(self):
         self.assertEqual('Right', classifyTriangle(3, 4, 5), '3,4,5 is a Right triangle')
 
-    def testRightTriangleB(self):
-        self.assertEqual('Right', classifyTriangle(5, 3, 4), '5,3,4 is a Right triangle')
+    def testNotRightTriangleB(self):
+        self.assertEqual('Scalene', classifyTriangle(5, 3, 4), '5,3,4 is a Scalene triangle')
 
     def testEquilateralTriangles(self):
         self.assertEqual('Equilateral', classifyTriangle(1, 1, 1), '1,1,1 should be equilateral')
 
     def testScaleneTriangle(self):
-        self.assertEqual('Scalene', classifyTriangle(14, 3, 42), '14,3,2 is a Scalene triangle')
+        self.assertEqual('Scalene', classifyTriangle(14, 3, 11), '14,3,11 is a Scalene triangle')
 
     def testIsoceles(self):
         self.assertEqual('Isoceles', classifyTriangle(3, 3, 2), '3,3,2 is a Isoceles triangle')
+
+    def testNegativeValues(self):
+        self.assertEqual('InvalidInput', classifyTriangle(-3, -3, -2), 'Negative values are Invalid')
+
+    def testInvalidTriangle(self):
+        self.assertEqual('NotATriangle', classifyTriangle(1, 1, 5), 'Not a Triangle, 1 + 1 < 5')
 
 
 if __name__ == '__main__':
